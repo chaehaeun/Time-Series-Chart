@@ -1,11 +1,9 @@
 import { getData } from '@/api';
-import { ChartDataType } from '@/types';
+import { ChartDataContextType, ChartDataType } from '@/types';
 import { createContext, useContext, useEffect, useState } from 'react';
 
-interface ChartDataContextType {
-  chartData: ChartDataType[];
-  LocationList: string[];
-  isLoading: boolean;
+interface ChartDataProviderProps {
+  children: React.ReactNode;
 }
 
 const ChartDataContext = createContext<ChartDataContextType>({
@@ -14,7 +12,7 @@ const ChartDataContext = createContext<ChartDataContextType>({
   isLoading: false,
 });
 
-export const ChartDataProvider = ({ children }: any) => {
+export const ChartDataProvider = ({ children }: ChartDataProviderProps) => {
   const [chartData, setChartData] = useState<ChartDataType[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 

@@ -4,3 +4,9 @@ export interface ChartDataType {
   value_area: number;
   value_bar: number;
 }
+
+export interface ChartDataContextType {
+  chartData: ChartDataType[];
+  LocationList: string[];
+  isLoading: boolean;
+}
