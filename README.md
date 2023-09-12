@@ -131,7 +131,3 @@ const LocationList = Array.from(new Set(chartData.map((item) => item.id)));
   - 고정값을 사용하지 않고 동적으로 버튼을 생성하기 위해 `chartData`의 `id`값을 중복을 제거하여 `LocationList`를 생성
 - 필터링 시 버튼에서 선택한 ID값과 동일한 ID값을 가진 데이터 구역만 하이라이트 처리
 - 특정 데이터 구역을 클릭 시에도 필터링 기능과 동일한 형태로 동일한 ID값을 가진 데이터 구역을 하이라이트
-
-```
-
-```
