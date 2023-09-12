@@ -5,7 +5,7 @@ interface ButtonProps {
 }
 
 const Button = ({ children, onClick, isActive }: ButtonProps) => {
-  const className = isActive ? '' : '';
+  const className = isActive ? ' bg-[#413ea0] text-white' : '';
 
   return (
     <button type="button" onClick={onClick} className={` bg-white p-1 px-3 rounded-2xl ${className}`}>

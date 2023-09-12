@@ -1,6 +1,6 @@
 import { CustomTooltip } from '@/components';
 import { fetchingChartData } from '@/context';
-import { useState } from 'react';
+import type { Dispatch } from 'react';
 import {
   Area,
   Bar,
@@ -14,15 +14,17 @@ import {
   YAxis,
 } from 'recharts';
 
-const Chart = () => {
+interface ChartProps {
+  active: string | null;
+  setActive: Dispatch<string | null>;
+}
+
+const Chart = ({ active, setActive }: ChartProps) => {
   const { chartData: data } = fetchingChartData();
-  const [highlightedID, setHighlightedID] = useState<string | null>(null);
 
   const handleBarClick = (id: string) => {
-    setHighlightedID(id);
+    setActive(id);
   };
-
-  console.log(highlightedID);
 
   return (
     <div className="p-5 pt-10 bg-white rounded-xl">
@@ -63,7 +65,7 @@ const Chart = () => {
           <Legend />
           <Bar yAxisId="bar" dataKey="value_bar" barSize={20} onClick={(data) => handleBarClick(data.id)}>
             {data.map((entry, index) => {
-              const fill = entry.id === highlightedID ? '#413ea0' : '#9b99d8';
+              const fill = entry.id === active ? '#413ea0' : '#9b99d8';
               return <Cell key={`cell-${index}`} fill={fill} className="cursor-pointer " />;
             })}
           </Bar>
