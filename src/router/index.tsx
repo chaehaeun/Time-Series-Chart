@@ -8,6 +8,10 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <NotFound />,
   },
+  {
+    path: '*',
+    element: <NotFound />,
+  },
 ]);
 
 export default router;
