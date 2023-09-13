@@ -7,10 +7,10 @@ import { v4 as uuidv4 } from 'uuid';
 
 function App() {
   const { chartData, LocationList, isLoading } = fetchingChartData();
-  const [active, setActive] = useState<string | null>(null);
+  const [active, setActive] = useState<string | undefined>(undefined);
   const [displayMode, setDisplayMode] = useState<DisplayMode>('all');
 
-  const handleButtonClick = (id: string | null) => {
+  const handleButtonClick = (id: string | undefined) => {
     setActive(id);
   };
 
@@ -38,9 +38,9 @@ function App() {
           <ul className="flex gap-2 py-2">
             <li key={'entire'}>
               <Button
-                isActive={active === null}
+                isActive={active === undefined}
                 onClick={() => {
-                  setActive(null);
+                  setActive(undefined);
                 }}
               >
                 전체

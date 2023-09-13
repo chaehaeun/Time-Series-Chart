@@ -1,6 +1,6 @@
 import { ChartDataType, DisplayMode } from '@/types';
 
-const getDotFillColor = (payload: ChartDataType, active: string | null, displayMode: DisplayMode): string => {
+const getDotFillColor = (payload: ChartDataType, active: string | undefined, displayMode: DisplayMode): string => {
   const { id } = payload;
   if (id === active && displayMode === 'area') {
     return '#413ea0';

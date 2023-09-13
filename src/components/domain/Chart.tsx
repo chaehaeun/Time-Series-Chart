@@ -19,8 +19,8 @@ import { CategoricalChartState } from 'recharts/types/chart/generateCategoricalC
 import { v4 as uuidv4 } from 'uuid';
 
 interface ChartProps {
-  active: string | null;
-  setActive: Dispatch<string | null>;
+  active: string | undefined;
+  setActive: Dispatch<string | undefined>;
   displayMode: DisplayMode;
 }
 
