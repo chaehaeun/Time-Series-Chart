@@ -9,7 +9,6 @@ interface CustomTooltipProps {
 
 const CustomTooltip = ({ active, payload, label, displayMode }: CustomTooltipProps) => {
   if (active && payload && payload.length) {
-    console.log(payload);
     return (
       <div className="p-2 text-xs -translate-y-1/2 bg-white rounded-sm bg-opacity-80">
         <span className="block">{label}</span>
