@@ -1,8 +1,9 @@
-import { DisplayMode } from '@/types';
+import { ChartDataType, DisplayMode } from '@/types';
 
-const getDotFillColor = (props: any, active: string | null, displayMode: DisplayMode): string => {
-  if (props.payload.id === active && displayMode === 'area') {
-    return '#413ea0';
+const getDotFillColor = (payload: ChartDataType, active: string | null, displayMode: DisplayMode): string => {
+  const { id } = payload;
+  console.log(payload);
+  if (id === active && displayMode === 'area') {
   } else if (displayMode === 'all') {
     return 'transparent';
   }

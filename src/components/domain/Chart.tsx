@@ -87,8 +87,9 @@ const Chart = ({ active, setActive, displayMode }: ChartProps) => {
               fill="#84c9d8"
               stroke="#8884d8"
               dot={(props) => {
-                const fillColor = getDotFillColor(props, active, displayMode);
-                return <circle key={uuidv4()} cx={props.cx} cy={props.cy} r={5} fill={fillColor} />;
+                const { payload, cx, cy } = props;
+                const fillColor = getDotFillColor(payload, active, displayMode);
+                return <circle key={uuidv4()} cx={cx} cy={cy} r={5} fill={fillColor} />;
               }}
             />
           )}
