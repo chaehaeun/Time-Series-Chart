@@ -10,3 +10,5 @@ export interface ChartDataContextType {
   LocationList: string[];
   isLoading: boolean;
 }
+
+export type DisplayMode = 'all' | 'bar' | 'area';

@@ -1,5 +1,6 @@
 import { CustomTooltip } from '@/components';
 import { fetchingChartData } from '@/context';
+import { DisplayMode } from '@/types';
 import type { Dispatch } from 'react';
 import {
   Area,
@@ -17,9 +18,10 @@ import {
 interface ChartProps {
   active: string | null;
   setActive: Dispatch<string | null>;
+  displayMode: DisplayMode;
 }
 
-const Chart = ({ active, setActive }: ChartProps) => {
+const Chart = ({ active, setActive, displayMode }: ChartProps) => {
   const { chartData: data } = fetchingChartData();
 
   const handleBarClick = (id: string) => {
@@ -50,6 +52,7 @@ const Chart = ({ active, setActive }: ChartProps) => {
               offset: 1,
             }}
           />
+
           <YAxis
             yAxisId="bar"
             orientation="right"
@@ -61,15 +64,20 @@ const Chart = ({ active, setActive }: ChartProps) => {
               offset: -10,
             }}
           />
-          <Tooltip content={<CustomTooltip active={false} payload={[]} label={''} />} />
+
+          <Tooltip content={<CustomTooltip active={false} payload={[]} label={''} displayMode={displayMode} />} />
           <Legend />
-          <Bar yAxisId="bar" dataKey="value_bar" barSize={20} onClick={(data) => handleBarClick(data.id)}>
-            {data.map((entry, index) => {
-              const fill = entry.id === active ? '#413ea0' : '#9b99d8';
-              return <Cell key={`cell-${index}`} fill={fill} className="cursor-pointer " />;
-            })}
-          </Bar>
-          <Area yAxisId="area" type="monotone" dataKey="value_area" fill="#84c9d8" stroke="#8884d8" />
+          {displayMode !== 'area' && (
+            <Bar yAxisId="bar" dataKey="value_bar" barSize={20} onClick={(data) => handleBarClick(data.id)}>
+              {data.map((entry, index) => {
+                const fill = entry.id === active ? '#413ea0' : '#9b99d8';
+                return <Cell key={`cell-${index}`} fill={fill} className="cursor-pointer " />;
+              })}
+            </Bar>
+          )}
+          {displayMode !== 'bar' && (
+            <Area yAxisId="area" type="monotone" dataKey="value_area" fill="#84c9d8" stroke="#8884d8" />
+          )}
         </ComposedChart>
       </ResponsiveContainer>
     </div>
