@@ -3,6 +3,7 @@ import { DISPLAY_MODE_BUTTONS } from '@/constant';
 import { fetchingChartData } from '@/context';
 import { DisplayMode } from '@/types';
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 function App() {
   const { chartData, LocationList, isLoading } = fetchingChartData();
@@ -22,7 +23,7 @@ function App() {
         <main className="mx-auto w-[1280px] my-5">
           <ul className="flex gap-2">
             {DISPLAY_MODE_BUTTONS.map((button) => (
-              <li key={button.mode}>
+              <li key={uuidv4()}>
                 <Button
                   isActive={displayMode === button.mode}
                   onClick={() => {
@@ -45,8 +46,8 @@ function App() {
                 전체
               </Button>
             </li>
-            {LocationList.map((id, idx) => (
-              <li key={idx}>
+            {LocationList.map((id) => (
+              <li key={uuidv4()}>
                 <Button isActive={active === id ? true : false} onClick={() => handleButtonClick(id)}>
                   {id}
                 </Button>
