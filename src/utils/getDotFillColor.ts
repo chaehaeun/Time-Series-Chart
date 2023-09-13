@@ -2,8 +2,8 @@ import { ChartDataType, DisplayMode } from '@/types';
 
 const getDotFillColor = (payload: ChartDataType, active: string | null, displayMode: DisplayMode): string => {
   const { id } = payload;
-  console.log(payload);
   if (id === active && displayMode === 'area') {
+    return '#413ea0';
   } else if (displayMode === 'all') {
     return 'transparent';
   }
